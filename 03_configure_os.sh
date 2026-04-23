@@ -72,3 +72,7 @@ systemctl daemon-reexec || true
 
 echo "==== OS tuning complete ===="
 echo "Log file: $LOG_FILE"
+
+cat /sys/kernel/mm/transparent_hugepage/enabled
+sysctl vm.swappiness
+ulimit -n

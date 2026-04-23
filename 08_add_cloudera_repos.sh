@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+#export CLOUDERA_REPO_USER='your_cloudera_username'
+#export CLOUDERA_REPO_PASS='your_cloudera_password'
+
 CM_VERSION="${CM_VERSION:-7.13.2.0}"
 CLOUDERA_REPO_USER="${CLOUDERA_REPO_USER:-}"
 CLOUDERA_REPO_PASS="${CLOUDERA_REPO_PASS:-}"
@@ -8,7 +11,7 @@ ENABLE_CFM_NOTE="${ENABLE_CFM_NOTE:-true}"
 
 LOG_DIR="${LOG_DIR:-/var/log/cloudera-bootstrap}"
 mkdir -p "$LOG_DIR"
-LOG_FILE="$LOG_DIR/09_add_cloudera_repos_$(date +%Y%m%d_%H%M%S).log"
+LOG_FILE="$LOG_DIR/08_add_cloudera_repos_$(date +%Y%m%d_%H%M%S).log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 if [[ -z "$CLOUDERA_REPO_USER" ]]; then
@@ -46,3 +49,6 @@ if [[ "$ENABLE_CFM_NOTE" == "true" ]]; then
 fi
 
 echo "Log file: $LOG_FILE"
+
+dnf repolist | grep -i cloudera
+

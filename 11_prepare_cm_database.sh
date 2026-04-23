@@ -1,4 +1,11 @@
 #!/bin/bash
+
+#export CM_DB_NAME=scm
+#export CM_DB_USER=scm
+#export CM_DB_PASS='ClouderaCM_2026'
+#export DB_HOST=localhost
+#export DB_PORT=5432
+
 set -euo pipefail
 
 CM_DB_NAME="${CM_DB_NAME:-scm}"
@@ -22,7 +29,11 @@ if [[ ! -f /usr/share/java/postgresql-connector-java.jar && ! -f /usr/share/java
 fi
 
 echo "Running scm_prepare_database.sh"
-/opt/cloudera/cm/schema/scm_prepare_database.sh postgresql "${DB_HOST}:${DB_PORT}/${CM_DB_NAME}" "${CM_DB_USER}" "${CM_DB_PASS}"
+/opt/cloudera/cm/schema/scm_prepare_database.sh \
+postgresql \
+"${CM_DB_NAME}" \
+"${CM_DB_USER}" \
+"${CM_DB_PASS}"
 
 echo "[OK] CM database initialized. Tables created by scm_prepare_database.sh"
 echo "Log file: $LOG_FILE"

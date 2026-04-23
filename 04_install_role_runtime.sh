@@ -41,3 +41,5 @@ if [[ ${#FAILED_PACKAGES[@]} -gt 0 ]]; then
 fi
 
 echo "Log file: $LOG_FILE"
+java -version
+alternatives --display java

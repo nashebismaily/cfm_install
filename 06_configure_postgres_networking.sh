@@ -1,7 +1,14 @@
 #!/bin/bash
+
+#export ALLOW_EXTERNAL=true
+#export ENABLE_PGDG=true
+#export PG_MAJOR=14
+#export PGDATA_DIR=/data/postgres14
+#export ALLOWED_CIDR=10.0.0.0/20
+
 set -euo pipefail
 
-PG_MAJOR="${PG_MAJOR:-16}"
+PG_MAJOR="${PG_MAJOR:-14}"
 PGDATA_DIR="${PGDATA_DIR:-/var/lib/pgsql/${PG_MAJOR}/data}"
 ALLOWED_CIDR="${ALLOWED_CIDR:-127.0.0.1/32}"
 
@@ -31,3 +38,6 @@ fi
 systemctl restart "postgresql-${PG_MAJOR}"
 echo "[OK] PostgreSQL networking configured for ${ALLOWED_CIDR}"
 echo "Log file: $LOG_FILE"
+
+ss -plnt | grep 5432
+sudo -u postgres psql -c "SELECT version();"

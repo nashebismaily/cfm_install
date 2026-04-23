@@ -4,7 +4,7 @@ set -uo pipefail
 ROLE="${1:-}"
 LOG_DIR="${LOG_DIR:-/var/log/cloudera-bootstrap}"
 mkdir -p "$LOG_DIR"
-LOG_FILE="$LOG_DIR/10_install_cm_packages_${ROLE:-unknown}_$(date +%Y%m%d_%H%M%S).log"
+LOG_FILE="$LOG_DIR/09_install_cm_packages_${ROLE:-unknown}_$(date +%Y%m%d_%H%M%S).log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 if [[ "$ROLE" != "manager" && "$ROLE" != "agent" ]]; then

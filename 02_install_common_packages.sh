@@ -41,3 +41,9 @@ if [[ ${#FAILED_PACKAGES[@]} -gt 0 ]]; then
   echo "[WARN] Packages that failed: ${FAILED_PACKAGES[*]}"
 fi
 echo "Log file: $LOG_FILE"
+
+python3 --version
+which nc
+which nslookup
+which host
+which jq

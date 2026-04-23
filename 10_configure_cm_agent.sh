@@ -5,7 +5,7 @@ MANAGER_HOST="${1:-}"
 
 LOG_DIR="${LOG_DIR:-/var/log/cloudera-bootstrap}"
 mkdir -p "$LOG_DIR"
-LOG_FILE="$LOG_DIR/11_configure_cm_agent_$(date +%Y%m%d_%H%M%S).log"
+LOG_FILE="$LOG_DIR/10_configure_cm_agent_$(date +%Y%m%d_%H%M%S).log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
 if [[ -z "$MANAGER_HOST" ]]; then
@@ -31,3 +31,5 @@ systemctl restart cloudera-scm-agent
 
 echo "[OK] Agent configured to point at ${MANAGER_HOST}"
 echo "Log file: $LOG_FILE"
+
+cat /etc/cloudera-scm-agent/config.ini | grep server_host

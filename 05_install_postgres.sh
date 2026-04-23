@@ -1,7 +1,14 @@
 #!/bin/bash
+
+#export ALLOW_EXTERNAL=true
+#export ENABLE_PGDG=true
+#export PG_MAJOR=14
+#export PGDATA_DIR=/data/postgres14
+#export ALLOWED_CIDR=10.0.0.0/20
+
 set -euo pipefail
 
-PG_MAJOR="${PG_MAJOR:-16}"
+PG_MAJOR="${PG_MAJOR:-14}"
 PGDATA_DIR="${PGDATA_DIR:-/var/lib/pgsql/${PG_MAJOR}/data}"
 USE_PGDG="${USE_PGDG:-true}"
 
@@ -48,3 +55,5 @@ systemctl restart "postgresql-${PG_MAJOR}"
 
 echo "[OK] PostgreSQL ${PG_MAJOR} installed and started"
 echo "Log file: $LOG_FILE"
+
+dnf list postgresql14-server

@@ -1,4 +1,9 @@
 #!/bin/bash
+
+#export CM_DB_PASS='ClouderaCM_2026'
+#export RM_DB_PASS='Rman_DB_2026'
+#export REG_DB_PASS='Registry_DB_2026'
+
 set -euo pipefail
 
 CM_DB_NAME="${CM_DB_NAME:-scm}"
@@ -57,3 +62,5 @@ echo "2. Run scm_prepare_database.sh to create CM tables"
 echo "3. Configure NiFi Registry JDBC properties in Cloudera Manager; Registry creates its schema on first start"
 echo
 echo "Log file: $LOG_FILE"
+
+sudo -u postgres psql -l
