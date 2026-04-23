@@ -9,7 +9,7 @@ exec > >(tee -a "$LOG_FILE") 2>&1
 COMMON_PACKAGES=(
   wget curl vim tar unzip bind-utils net-tools lsof which rsync jq
   chrony rng-tools nmap-ncat tcpdump telnet perl iproute rpcbind
-  python3.11 python3.11-pip
+  python3.11 python3.11-pip python3-psycopg2
 )
 
 echo "Installing common packages"
