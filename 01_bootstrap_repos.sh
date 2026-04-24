@@ -6,9 +6,9 @@ mkdir -p "$LOG_DIR"
 LOG_FILE="$LOG_DIR/01_bootstrap_repos_$(date +%Y%m%d_%H%M%S).log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-ALLOW_EXTERNAL="${ALLOW_EXTERNAL:-false}"
+ALLOW_EXTERNAL="${ALLOW_EXTERNAL:-true}"
 ENABLE_EPEL="${ENABLE_EPEL:-false}"
-ENABLE_PGDG="${ENABLE_PGDG:-false}"
+ENABLE_PGDG="${ENABLE_PGDG:-true}"
 
 echo "==== Repo bootstrap starting ===="
 echo "ALLOW_EXTERNAL=$ALLOW_EXTERNAL ENABLE_EPEL=$ENABLE_EPEL ENABLE_PGDG=$ENABLE_PGDG"

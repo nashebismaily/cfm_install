@@ -14,7 +14,7 @@ echo "==== Configuring Cloudera Manager defaults ===="
 
 touch "$CM_DEFAULTS_FILE"
 
-if ! grep -q "CMF_FF_PREVENT_HOST_HEADER_INJECTION" "$CM_DEFAULTS_FILE"; then
+if ! grep -Eq '^[[:space:]]*export[[:space:]]+CMF_FF_PREVENT_HOST_HEADER_INJECTION=' "$CM_DEFAULTS_FILE"; then
   echo 'export CMF_FF_PREVENT_HOST_HEADER_INJECTION="false"' >> "$CM_DEFAULTS_FILE"
   echo "[OK] Added CM host header override"
 else
