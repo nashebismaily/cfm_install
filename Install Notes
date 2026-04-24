@@ -95,3 +95,28 @@ export ENABLE_EPEL=false
 08
 09 -> sudo bash -E 09_install_cm_packages.sh agent
 10 -> sudo bash -E 10_configure_cm_agent.sh manager.example.internal
+
+
+
+CM
+
+1. NiFI repo: https://archive.cloudera.com/p/cfm4/4.12.0.0/redhat9/yum/tars/parcel/
+
+
+NiFi Service
+------------
+Custom Java Home:
+/usr/lib/jvm/java-21-openjdk-21.0.10.0.7-1.el9.x86_64
+
+
+Custom Java Home:
+/usr/lib/jvm/java-21-openjdk-21.0.10.0.7-1.el9.x86_64
+
+Database Type: PostgreSQL
+JDBC URL: jdbc:postgresql://10.0.7.147:5432/nifireg
+Database Driver Class: org.postgresql.Driver
+Database Driver Location: /opt/cloudera/cm/lib/postgresql-42.7.2.jar
+Database Username: nifireg
+Database Password: <your_password>
+Validation Query: SELECT 1
+SSL: Disabled
