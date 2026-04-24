@@ -8,15 +8,15 @@ set -euo pipefail
 
 CM_DB_NAME="${CM_DB_NAME:-scm}"
 CM_DB_USER="${CM_DB_USER:-scm}"
-CM_DB_PASS="${CM_DB_PASS:-changeme_scm}"
+CM_DB_PASS="${CM_DB_PASS:-ClouderaCM_2026}"
 
 RM_DB_NAME="${RM_DB_NAME:-rman}"
 RM_DB_USER="${RM_DB_USER:-rman}"
-RM_DB_PASS="${RM_DB_PASS:-changeme_rman}"
+RM_DB_PASS="${RM_DB_PASS:-Rman_DB_2026}"
 
 REG_DB_NAME="${REG_DB_NAME:-nifireg}"
 REG_DB_USER="${REG_DB_USER:-nifireg}"
-REG_DB_PASS="${REG_DB_PASS:-changeme_nifireg}"
+REG_DB_PASS="${REG_DB_PASS:-Registry_DB_2026}"
 
 LOG_DIR="${LOG_DIR:-/var/log/cloudera-bootstrap}"
 mkdir -p "$LOG_DIR"
