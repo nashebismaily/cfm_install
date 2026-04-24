@@ -1,0 +1,8 @@
+Database Type: PostgreSQL
+JDBC URL: jdbc:postgresql://10.0.7.147:5432/nifireg
+Database Driver Class: org.postgresql.Driver
+Database Driver Location: /opt/cloudera/cm/lib/postgresql-42.7.2.jar
+Database Username: nifireg
+Database Password: <your_password>
+Validation Query: SELECT 1
+SSL: Disabled
