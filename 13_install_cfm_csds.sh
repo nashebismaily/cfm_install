@@ -1,10 +1,3 @@
-# 13_install_cfm_csds.sh
-
-#export CLOUDERA_REPO_USER='your_cloudera_username'
-#export CLOUDERA_REPO_PASS='your_cloudera_password'
-#export CFM_VERSION=4.12.0.0
-
-```bash
 #!/bin/bash
 set -euo pipefail
 
@@ -37,13 +30,13 @@ echo "==== Downloading NiFi CSD ===="
 NIFI_JAR="NIFI-2.6.0.4.12.0.0-914.jar"
 NIFI_URL="https://archive.cloudera.com/p/cfm4/${CFM_VERSION}/redhat9/yum/tars/parcel/${NIFI_JAR}"
 
-curl -u "$CLOUDERA_REPO_USER:$CLOUDERA_REPO_PASS" -L -o "$NIFI_JAR" "$NIFI_URL"
+curl -f -u "$CLOUDERA_REPO_USER:$CLOUDERA_REPO_PASS" -L -o "$NIFI_JAR" "$NIFI_URL"
 
 echo "==== Downloading NiFi Registry CSD ===="
 NIFIREG_JAR="NIFIREGISTRY-2.6.0.4.12.0.0-914.jar"
 NIFIREG_URL="https://archive.cloudera.com/p/cfm4/${CFM_VERSION}/redhat9/yum/tars/parcel/${NIFIREG_JAR}"
 
-curl -u "$CLOUDERA_REPO_USER:$CLOUDERA_REPO_PASS" -L -o "$NIFIREG_JAR" "$NIFIREG_URL"
+curl -f -u "$CLOUDERA_REPO_USER:$CLOUDERA_REPO_PASS" -L -o "$NIFIREG_JAR" "$NIFIREG_URL"
 
 echo "==== Validating downloads ===="
 for f in "$NIFI_JAR" "$NIFIREG_JAR"; do
@@ -92,18 +85,3 @@ echo "==== Done ===="
 echo "Refresh CM UI and go to Cluster -> Add Service"
 echo "You should now see NiFi and NiFi Registry"
 echo "Log file: $LOG_FILE"
-```
-
-## Required Exports Before Running
-
-```bash
-export CLOUDERA_REPO_USER='your_cloudera_username'
-export CLOUDERA_REPO_PASS='your_cloudera_password'
-export CFM_VERSION=4.12.0.0
-```
-
-## Run
-
-```bash
-sudo -E bash 13_install_cfm_csds.sh
-```
