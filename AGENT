@@ -1,0 +1,13 @@
+sudo -E bash 00_check_connectivity.sh
+sudo -E bash 01_bootstrap_repos.sh
+sudo -E bash 02_install_common_packages.sh
+sudo -E bash 03_configure_os.sh
+sudo -E bash 04_install_role_runtime.sh agent
+sudo -E bash 08_add_cloudera_repos.sh
+sudo -E bash 09_install_cm_packages.sh agent
+sudo -E bash 10_configure_cm_agent.sh <manager-hostname>
+sudo -E bash 14_validate_ready_state.sh
+
+sudo -E bash 04_install_role_runtime.sh agent
+sudo -E bash 09_install_cm_packages.sh agent
+sudo -E bash 10_configure_cm_agent.sh <manager-hostname>
