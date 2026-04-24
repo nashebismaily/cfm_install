@@ -1,0 +1,51 @@
+SERVER
+
+1. Exports
+
+
+export CLOUDERA_REPO_USER=''
+export CLOUDERA_REPO_PASS=''
+
+export CM_VERSION=7.13.2.0
+export CFM_VERSION=4.12.0.0
+
+export PG_MAJOR=14
+export PGDATA_DIR=/data/postgres14
+export ALLOWED_CIDR='10.0.0.0/20'
+
+export CM_DB_NAME=scm
+export CM_DB_USER=scm
+export CM_DB_PASS='ClouderaCM_2026'
+
+export RM_DB_NAME=rman
+export RM_DB_USER=rman
+export RM_DB_PASS='Rman_DB_2026'
+
+export REG_DB_NAME=nifireg
+export REG_DB_USER=nifireg
+export REG_DB_PASS='Registry_DB_2026'
+
+export DB_HOST=localhost
+export DB_PORT=5432
+
+export ALLOW_EXTERNAL=true
+export ENABLE_PGDG=true
+export ENABLE_EPEL=false
+
+2. Runs
+
+00
+
+01 -> Run twice make sure postgres appears
+02
+03
+04 -> sudo bash -E 04_install_role_runtime.sh manager
+05
+06 
+07
+08
+09 -> sudo bash 09_install_cm_packages.sh manager
+10 -> sudo bash 10_configure_cm_agent.sh localhost
+11
+12
+13
