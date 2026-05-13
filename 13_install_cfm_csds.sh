@@ -6,7 +6,7 @@ mkdir -p "$LOG_DIR"
 LOG_FILE="$LOG_DIR/13_install_cfm_csds_$(date +%Y%m%d_%H%M%S).log"
 exec > >(tee -a "$LOG_FILE") 2>&1
 
-CFM_VERSION="${CFM_VERSION:-4.12.0.0}"
+CFM_VERSION="${CFM_VERSION:-4.12.0.1}"
 CSD_DIR="/opt/cloudera/csd"
 TMP_DIR="/tmp/cfm-csds"
 
@@ -27,13 +27,13 @@ echo "==== Cleaning old temporary downloads ===="
 rm -f "$TMP_DIR"/*.jar || true
 
 echo "==== Downloading NiFi CSD ===="
-NIFI_JAR="NIFI-2.6.0.4.12.0.0-914.jar"
+NIFI_JAR="NIFI-2.6.0.4.12.0.1-8.jar"
 NIFI_URL="https://archive.cloudera.com/p/cfm4/${CFM_VERSION}/redhat9/yum/tars/parcel/${NIFI_JAR}"
 
 curl -f -u "$CLOUDERA_REPO_USER:$CLOUDERA_REPO_PASS" -L -o "$NIFI_JAR" "$NIFI_URL"
 
 echo "==== Downloading NiFi Registry CSD ===="
-NIFIREG_JAR="NIFIREGISTRY-2.6.0.4.12.0.0-914.jar"
+NIFIREG_JAR="NIFIREGISTRY-2.6.0.4.12.0.1-8.jar"
 NIFIREG_URL="https://archive.cloudera.com/p/cfm4/${CFM_VERSION}/redhat9/yum/tars/parcel/${NIFIREG_JAR}"
 
 curl -f -u "$CLOUDERA_REPO_USER:$CLOUDERA_REPO_PASS" -L -o "$NIFIREG_JAR" "$NIFIREG_URL"

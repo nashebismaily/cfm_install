@@ -1,8 +1,8 @@
-#export CLOUDERA_REPO_USER=''
-#export CLOUDERA_REPO_PASS=''
+export CLOUDERA_REPO_USER=''
+export CLOUDERA_REPO_PASS=''
 
 export CM_VERSION=7.13.2.0
-export CFM_VERSION=4.12.0.0
+export CFM_VERSION=4.12.0.1-8
 
 export PG_MAJOR=14
 export PGDATA_DIR=/data/postgres14
