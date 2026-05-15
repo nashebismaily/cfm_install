@@ -1,0 +1,124 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;\f1\froman\fcharset0 Times-Bold;\f2\fmodern\fcharset0 Courier;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red109\green109\blue109;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\cssrgb\c50196\c50196\c50196;}
+\margl1440\margr1440\vieww11460\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 Python\
+/bin/python3.11\
+\
+Here are the actual NiFi/CM properties you changed to get the deployment working.\
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f1\b\fs48 \cf0 TLS / HTTPS\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 nifi.web.https.host=ip-10-0-12-178.us-east-2.compute.internal\
+nifi.web.https.port=8443\
+nifi.security.keystore=/opt/cloudera/security/keystore.p12\
+nifi.security.keystoreType=PKCS12\
+nifi.security.keystorePasswd=<your password>\
+nifi.security.keyPasswd=<your password>\
+nifi.security.truststore=/opt/cloudera/security/truststore.jks\
+nifi.security.truststoreType=JKS\
+nifi.security.truststorePasswd=<your password>\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 \strokec2 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f1\b\fs48 \cf0 \strokec2 Anonymous bootstrap auth\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 nifi.security.allow.anonymous.authentication=true\
+nifi.initial.admin.identity=anonymous\
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f1\b\fs48 \cf0 \strokec2 Auto-generated node identities\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 nifi.autogen.node.identities=true\
+nifi.autogen.node.identities.dn.prefix=CN=\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 IMPORTANT:\uc0\u8232 You REMOVED the suffix.\
+Final state:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 nifi.autogen.node.identities.dn.suffix=\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 (blank)\
+Originally it was:\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs26 \cf0 , OU=NIFI\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 and that caused the identity collision.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f1\b\fs48 \cf0 \strokec2 Files you regenerated repeatedly\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 rm -f /var/lib/nifi/users.xml\
+rm -f /var/lib/nifi/authorizations.xml\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 after major auth changes.\
+\pard\pardeftab720\partightenfactor0
+\cf3 \strokec3 \
+\pard\pardeftab720\sa321\partightenfactor0
+
+\f1\b\fs48 \cf0 \strokec2 Registry\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f2\b0\fs26 \cf0 \
+nifi.registry.web.https.host=<hostname>\
+nifi.registry.web.https.port=18443\
+\
+\
+nifi.registry.security.keystore=/opt/cloudera/security/keystore.p12\
+nifi.registry.security.keystoreType=PKCS12\
+nifi.registry.security.keystorePasswd=<password>\
+nifi.registry.security.keyPasswd=<password>\
+\
+\
+nifi.registry.security.truststore=/opt/cloudera/security/truststore.jks\
+nifi.registry.security.truststoreType=JKS\
+nifi.registry.security.truststorePasswd=<password>\
+\
+\
+nifi.registry.security.needClientAuth=false\
+\
+\
+nifi.registry.security.initial.admin.identity=anonymous\
+\pard\pardeftab720\sa321\partightenfactor0
+\cf0 \
+\
+CM\
+\
+keytool -importcert \\\
+-alias cloudera-rootca \\\
+-file /opt/cloudera/security/rootCA.crt \\\
+-keystore /usr/lib/jvm/java/lib/security/cacerts \\\
+-storepass changeit \\\
+-noprompt\
+}

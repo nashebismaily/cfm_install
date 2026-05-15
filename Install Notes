@@ -115,7 +115,8 @@ Custom Java Home:
 Database Type: PostgreSQL
 JDBC URL: jdbc:postgresql://10.0.7.147:5432/nifireg
 Database Driver Class: org.postgresql.Driver
-Database Driver Location: /opt/cloudera/parcels/CFM-4.12.0.0-914/REGISTRY/jdbc-drivers/postgresql-42.5.5.jar
+Database Driver Location: /opt/cloudera/parcels/CFM-4.12.0.1-8/REGISTRY/jdbc-drivers/postgresql-42.5.5.jar 
+
 Database Username: nifireg
 Database Password: <your_password>
 Validation Query: SELECT 1
